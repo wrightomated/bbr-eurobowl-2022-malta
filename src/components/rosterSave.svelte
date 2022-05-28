@@ -82,13 +82,6 @@
     symbol="print"
     clickFunction={printPage}
 />
-{#if $rosterViewMode === 'table'}
-    <MaterialButton
-        hoverText="Roster Settings"
-        symbol="settings"
-        clickFunction={toggleColumnControls}
-    />
-{/if}
 
 <style lang="scss">
     .saved {

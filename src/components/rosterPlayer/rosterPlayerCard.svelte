@@ -272,59 +272,6 @@
             {/if}
         </div>
 
-        <div class="extraDetails">
-            {#if $roster.format !== 'sevens'}
-                {#if $roster.players[index]?.alterations?.spp !== undefined}
-                    <label
-                        ><span class="mini-title">SPP:</span>
-                        <input
-                            class="spp-input"
-                            type="number"
-                            placeholder="?"
-                            inputmode="numeric"
-                            use:blurOnEscapeOrEnter
-                            bind:value={$roster.players[index].alterations.spp}
-                        />
-                    </label>
-                {:else if !rosterPlayer.starPlayer}0{/if}
-            {/if}
-
-            {#if $roster.mode !== 'exhibition' && !rosterPlayer.starPlayer}
-                <label
-                    ><span class="mini-title">MNG:</span>
-                    <input
-                        type="checkbox"
-                        class="checkbox"
-                        use:blurOnEscapeOrEnter
-                        bind:checked={$roster.players[index].alterations.mng}
-                    />
-                </label>
-                {#if $roster.format !== 'sevens'}
-                    <label>
-                        <span class="mini-title">NI:</span>
-                        <input
-                            class="spp-input"
-                            type="number"
-                            placeholder="?"
-                            inputmode="numeric"
-                            use:blurOnEscapeOrEnter
-                            bind:value={$roster.players[index].alterations.ni}
-                        />
-                    </label>
-
-                    <label>
-                        <span class="mini-title">TR:</span>
-                        <input
-                            type="checkbox"
-                            class="checkbox"
-                            use:blurOnEscapeOrEnter
-                            bind:checked={$roster.players[index].alterations.tr}
-                        />
-                    </label>
-                {/if}
-            {/if}
-        </div>
-
         <p>
             <span class="mini-title">Hiring Fee:</span>
             {rosterPlayer.player.cost > 0 &&

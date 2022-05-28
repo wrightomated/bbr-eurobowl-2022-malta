@@ -8,6 +8,9 @@
 
     let selectedId: number;
 
+    $: selectedPlayer = starPlayers.starPlayers.find(
+        (x) => x.id === selectedId
+    );
     $: filteredStarPlayers = filterStarPlayers(
         starPlayers,
         $currentTeam as Team,
@@ -26,22 +29,18 @@
         })
         .filter((x) => x.displayName !== 'ignoreThis');
 
-    const getSelected = (id) => {
-        return starPlayers.starPlayers.find((x) => x.id === id);
-    };
-
     const addStarPlayer = () => {
-        const addTwo = getSelected(selectedId).twoForOne;
+        const addTwo = selectedPlayer.twoForOne;
 
         roster.addPlayer({
-            player: getSelected(selectedId),
-            playerName: getSelected(selectedId).position,
+            player: selectedPlayer,
+            playerName: selectedPlayer.position,
             starPlayer: true,
         });
 
         if (addTwo) {
             const twoForPlayer = starPlayers.starPlayers.find(
-                (x) => x.id === getSelected(selectedId).twoForOne
+                (x) => x.id === selectedPlayer.twoForOne
             );
             roster.addPlayer({
                 player: twoForPlayer,
@@ -74,12 +73,13 @@
                     {/each}
                 </select>
             {/if}
+            <p />
         </td>
         <td
             >{$roster.players.filter((x) => x.starPlayer && !x.deleted).length} /
             2</td
         >
-        <td>{getSelected(selectedId)?.cost || 0},000</td>
+        <td>{selectedPlayer?.cost || 0},000</td>
         <td>
             {#if filteredStarPlayers.length > 0 && $roster.players.filter((x) => x.starPlayer && !x.deleted).length < 2}
                 <div class="add-star">
@@ -93,6 +93,16 @@
             {/if}
         </td>
     </tr>
+    {#if selectedPlayer?.extraSkillCost}
+        <tr>
+            <td colspan="4"
+                ><p>
+                    This star player costs an additional {selectedPlayer?.extraSkillCost}
+                    primary skill(s).
+                </p></td
+            >
+        </tr>
+    {/if}
 </table>
 
 <style lang="scss">

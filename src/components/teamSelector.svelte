@@ -33,6 +33,8 @@
     import { showDungeonBowl } from '../store/showDungeonBowl.store';
     import type { TeamFormat } from '../types/teamFormat';
     import { getSavedRosterFromLocalStorage } from '../helpers/localStorageHelper';
+    import SkillPackBox from './euroBowl/skillPackBox.svelte';
+    import { selectedSkillPack } from '../store/skillPack.store';
 
     export let teamList: Team[];
 
@@ -68,18 +70,13 @@
             mode: 'exhibition',
             fans: 0,
             format: 'elevens',
+            skillPack: $selectedSkillPack,
         });
 
         teamSelectionOpen.set(false);
         showAvailablePlayers.set(false);
         showAvailableStarPlayers.set(false);
         showNewTeamDialogue.set(false);
-
-        sendEventToAnalytics('new-team-created', {
-            teamType: $currentTeam.name,
-            rosterMode: $rosterMode,
-            format: $teamFormat,
-        });
     };
 
     const loadTeam = (savedRoster: { id: number; name?: string }) => {
@@ -124,6 +121,15 @@
 
 {#if !$teamLoadOpen && $showNewTeamDialogue}
     <h2 class="page-title">Create EuroBowl 2022 Malta Team</h2>
+    <a
+        class="rules-link"
+        href="http://www.eurobowl.eu/2022/default.asp?p=2"
+        target="_blank"
+        rel="noopener noreferrer"
+        >EuroBowl 2022 Malta Rules Pack <i class="material-icons launch-icon"
+            >launch</i
+        ></a
+    >
 
     {#if $teamSelectionOpen}
         <div class="button-container">
@@ -162,6 +168,10 @@
                     <p class="no-matches">No matches</p>
                 {/if}
             </div>
+            {#if $currentTeam}
+                <p>Select skill pack:</p>
+                <SkillPackBox />
+            {/if}
         </div>
         <Button
             clickFunction={createTeam}
@@ -221,7 +231,7 @@
     .display-font {
         font-family: $display-font;
     }
-    .no-matches {
+    p {
         margin-left: 4px;
     }
 
@@ -287,5 +297,12 @@
     }
     .signed-in-heading {
         text-align: center;
+    }
+    .rules-link {
+        text-decoration: underline;
+    }
+    .launch-icon {
+        font-size: 16px;
+        vertical-align: text-bottom;
     }
 </style>

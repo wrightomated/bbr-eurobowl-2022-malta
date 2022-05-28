@@ -41,8 +41,7 @@
 <span class="no-print">
     <div class="pill-box">
         <Pill text={$roster.teamType + ' Team'} />
-        <Pill text={getTeamFormatShortDisplay($roster.format)} />
-        <Pill text={$roster.mode} />
+        <Pill text={'EuroBowl 2022 Malta'} />
     </div>
 </span>
 

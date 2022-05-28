@@ -17,7 +17,14 @@ export interface Roster {
     mode?: RosterMode;
     format?: TeamFormat;
     leagueRosterStatus?: LeagueRosterStatus;
+    skillPack?: RosterSkillPack;
 }
+
+export type RosterSkillPack = {
+    primary?: { max: number; used: number };
+    secondary?: { max: number; used: number };
+    star?: { max: number; used: number };
+};
 
 export type RosterPreviews = { [key: string]: RosterPreview };
 

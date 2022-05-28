@@ -98,9 +98,9 @@ type TierSkillPacks = {
     [key in SkillPackLabel]: SkillPack;
 };
 
-type SkillPackLabel = 'A' | 'B' | 'C' | 'D';
+export type SkillPackLabel = 'A' | 'B' | 'C' | 'D';
 
-type SkillPack = {
+export type SkillPack = {
     primarySkills?: number;
     secondarySkills?: number;
     starPlayers?: number;
