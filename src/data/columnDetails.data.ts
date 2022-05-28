@@ -122,7 +122,7 @@ export const columnDetails: ColumnDetails[] = [
         rowDetails: {
             component: PlayerNumberInput,
         },
-        disallowedRosterFormats: ['sevens'],
+        disallowedRosterFormats: ['sevens', 'elevens'],
     },
     {
         id: 13,

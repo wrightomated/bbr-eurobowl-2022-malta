@@ -79,17 +79,7 @@
                 QTY
             </td>
             <td on:click={toggleShowAllInducements}>Cost</td>
-            <td class="inducement__toggle"
-                ><MaterialButton
-                    hoverText={$showAllInducements
-                        ? 'Hide inducements'
-                        : 'Show inducements'}
-                    symbol={$showAllInducements
-                        ? 'arrow_drop_up'
-                        : 'arrow_drop_down'}
-                    clickFunction={toggleShowAllInducements}
-                /></td
-            >
+            <td class="inducement__toggle" />
         </tr>
     </thead>
     <tbody>
@@ -103,27 +93,6 @@
                         clickFunction={() => removeAllInducements()}
                     /></td
                 >
-            </tr>
-        {/if}
-        {#if $showAllInducements}
-            <tr class="no-print"
-                ><td class="inducement__search" colspan="4"
-                    ><input
-                        aria-label="Search inducements"
-                        placeholder="Search inducements"
-                        type="text"
-                        bind:value={searchTerm}
-                    />&nbsp;
-                    <span class="inducement__clear-search">
-                        <MaterialButton
-                            hoverText="Clear"
-                            symbol="clear"
-                            clickFunction={() => {
-                                searchTerm = '';
-                            }}
-                        />
-                    </span>
-                </td>
             </tr>
         {/if}
         {#each filteredInducements as ind}
@@ -156,21 +125,6 @@
                 </tr>
             {/if}
         {/each}
-        {#if $showAllInducements}
-            <tr class="no-print"
-                ><td colspan="4">
-                    <MaterialButton
-                        hoverText={$showAllInducements
-                            ? 'Hide inducements'
-                            : 'Show inducements'}
-                        symbol={$showAllInducements
-                            ? 'arrow_drop_up'
-                            : 'arrow_drop_down'}
-                        clickFunction={toggleShowAllInducements}
-                    /></td
-                ></tr
-            >
-        {/if}
     </tbody>
 </table>
 

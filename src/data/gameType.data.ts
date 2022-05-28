@@ -17,7 +17,7 @@ const elevensGame: GameTypeSettings = {
     teamFormat: 'elevens',
     maxPlayers: 16,
     minPlayers: 11,
-    startingTreasury: 1000,
+    startingTreasury: 1150,
     rerollDetails: { costMultiplier: 1, max: 8 },
     assistantCoaches: { cost: 10, max: 6 },
     cheerleaders: { cost: 10, max: 12 },

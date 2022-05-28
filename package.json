@@ -14,13 +14,13 @@
         "build": "rollup -c",
         "dev": "rollup -c -w",
         "dev:serve": "HOST=0.0.0.0 npm run dev",
-        "start": "sirv public",
+        "start": "sirv public -p 5001",
         "validate": "svelte-check",
         "test": "jest",
         "coverage": "jest --coverage",
         "test:watch": "jest --watch",
         "e2e": "cypress run",
-        "e2e:local": "CYPRESS_BASE_URL=http://localhost:5000 cypress run"
+        "e2e:local": "CYPRESS_BASE_URL=http://localhost:5001 cypress run"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.12.11",

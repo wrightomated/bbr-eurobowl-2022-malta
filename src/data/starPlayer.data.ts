@@ -17,6 +17,7 @@ const deeprootStrongbranch: StarPlayer = {
     skills: [13, 71, 551, 58, 59, 60, 86, 87],
     cost: 280,
     specialRules: ['Reliable'],
+    extraSkillCost: 1,
 };
 const eldrilSidewinder: StarPlayer = {
     id: 202,
@@ -87,6 +88,7 @@ const griff: StarPlayer = {
     skills: [13, 4, 16, 711, 11, 12],
     cost: 280,
     specialRules: ['Consummate Professional'],
+    extraSkillCost: 3,
 };
 const grim: StarPlayer = {
     id: 209,
@@ -114,6 +116,7 @@ const hakflem: StarPlayer = {
     skills: [4, 28, 71, 33, 35],
     cost: 210,
     specialRules: ['Treacherous'],
+    extraSkillCost: 1,
 };
 const helmut: StarPlayer = {
     id: 211,
@@ -168,6 +171,7 @@ const morg: StarPlayer = {
     skills: [13, 71, 551, 60, 86],
     cost: 380,
     specialRules: ['The Ballista'],
+    extraSkillCost: 3,
 };
 const roxanna: StarPlayer = {
     id: 216,
@@ -287,6 +291,7 @@ const whilhelmChaney: StarPlayer = {
     skills: [1, 26, 17, 71, 77, 24],
     cost: 220,
     specialRules: ['Savage Mauling'],
+    extraSkillCost: 1,
 };
 
 const kreek: StarPlayer = {
@@ -302,6 +307,7 @@ const kreek: StarPlayer = {
     skills: [64, 71, 55, 72, 33, 79],
     cost: 170,
     specialRules: ["I'll be back"],
+    extraSkillCost: 1,
 };
 
 const grashnak: StarPlayer = {
@@ -344,70 +350,6 @@ const max: StarPlayer = {
     specialRules: ['Maximum Carnage'],
 };
 
-const barikFarblast: StarPlayer = {
-    id: 233,
-    position: 'Barik Farblast',
-    playerStats: [6, 3, 4, 3, 9],
-    playsFor: [
-        'Halfling Thimble Cup',
-        'Old World Classic',
-        'Worlds Edge Superleague',
-    ],
-    skills: [42, 71, 46, 79, 38, 22, 60],
-    cost: 80,
-    specialRules: ['Blast It!'],
-};
-
-const bomberDribblesnot: StarPlayer = {
-    id: 234,
-    position: 'Bomber Dribblesnot',
-    playerStats: [6, 2, 3, 3, 8],
-    playsFor: ['Badlands Brawl', 'Underworld Challenge'],
-    skills: [37, 65, 4, 71, 78, 79, 81],
-    cost: 50,
-    specialRules: ['Kaboom!'],
-};
-
-const fungusTheLoon: StarPlayer = {
-    id: 235,
-    position: 'Fungus the Loon',
-    playerStats: [4, 7, 3, 0, 8],
-    playsFor: ['Badlands Brawl', 'Underworld Challenge'],
-    skills: [64, 55, 71, 72, 79, 81],
-    cost: 80,
-    specialRules: ['Whirling Dervish!'],
-};
-
-const ivarEriksson: StarPlayer = {
-    id: 236,
-    position: 'Ivar Eriksson',
-    playerStats: [6, 4, 3, 4, 9],
-    playsFor: ['Old World Classic'],
-    skills: [13, 53, 711, 23],
-    cost: 245,
-    specialRules: ['Raiding Party'],
-};
-
-const skrorgSnowpelt: StarPlayer = {
-    id: 237,
-    position: 'Skrorg Snowpelt',
-    playerStats: [5, 5, 4, 0, 9],
-    playsFor: ['Old World Classic'],
-    skills: [26, 27, 54, 71, 55],
-    cost: 250,
-    specialRules: ['Pump Up the Crowd'],
-};
-
-const thorssonStoutmead: StarPlayer = {
-    id: 238,
-    position: 'Thorsson Stoutmead',
-    playerStats: [6, 3, 4, 3, 8],
-    playsFor: ['Old World Classic'],
-    skills: [13, 93, 71, 60],
-    cost: 170,
-    specialRules: ['Beer Barrel Bash!'],
-};
-
 export const starPlayers = {
     starPlayers: [
         theBlackGobbo,
@@ -443,11 +385,5 @@ export const starPlayers = {
         bryce,
         scyla,
         max,
-        barikFarblast,
-        bomberDribblesnot,
-        fungusTheLoon,
-        ivarEriksson,
-        skrorgSnowpelt,
-        thorssonStoutmead,
     ],
 };

@@ -11,7 +11,11 @@
     } from '../store/teamSelectionOpen.store';
     import { savedRosterIndex } from '../store/saveDirectory.store';
     import { teamLoadOpen } from '../store/teamLoadOpen.store';
-    import { filteredTiers, toggledTiers } from '../store/filterTier.store';
+    import {
+        filteredTiers,
+        teamTiers,
+        toggledTiers,
+    } from '../store/filterTier.store';
     import {
         showAvailablePlayers,
         showAvailableStarPlayers,
@@ -29,23 +33,15 @@
     import { showDungeonBowl } from '../store/showDungeonBowl.store';
     import type { TeamFormat } from '../types/teamFormat';
     import { getSavedRosterFromLocalStorage } from '../helpers/localStorageHelper';
-    import type { RosterPreviews } from '../models/roster.model';
 
     export let teamList: Team[];
 
     let rosterCode: string;
-    let includeNaf: boolean = true;
-
-    const nafTeams = [28, 29];
-    const teamTiers: TeamTier[] = [1, 2, 3, 4, 5];
-    const rosterModes: RosterMode[] = ['league', 'exhibition'];
-    const teamFormats: TeamFormat[] = ['elevens', 'sevens', 'dungeon bowl'];
 
     $: searchTerm = '';
 
     $: sortedTeam = sortTeam()
         .filter((x) => $filteredTiers.includes(x.tier))
-        .filter((x) => (!includeNaf ? !nafTeams.includes(x.id) : true))
         .filter((x) =>
             searchTerm
                 ? x.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -69,9 +65,9 @@
         roster.reset({
             teamId: $currentTeam.id,
             teamType: $currentTeam.name,
-            mode: $rosterMode,
-            fans: $rosterMode === 'exhibition' ? 0 : 1,
-            format: $teamFormat,
+            mode: 'exhibition',
+            fans: 0,
+            format: 'elevens',
         });
 
         teamSelectionOpen.set(false);
@@ -114,10 +110,6 @@
         toggleLoad();
     };
 
-    const toggleNaf = () => {
-        includeNaf = !includeNaf;
-    };
-
     const toggleDungeonBowl = (show: boolean) => {
         teamLoadOpen.set(false);
         teamSelectionOpen.set(!show);
@@ -131,22 +123,8 @@
 </script>
 
 {#if !$teamLoadOpen && $showNewTeamDialogue}
-    <h2 class="page-title">Create New Team</h2>
-    <ToggleButton
-        options={rosterModes}
-        selectedIndex={rosterModes.indexOf($rosterMode)}
-        selected={(mode) => {
-            rosterMode.set(mode);
-        }}
-    />
+    <h2 class="page-title">Create EuroBowl 2022 Malta Team</h2>
 
-    <ToggleButton
-        options={teamFormats}
-        selectedIndex={teamFormats.indexOf($teamFormat)}
-        selected={(format) => {
-            changeFormat(format);
-        }}
-    />
     {#if $teamSelectionOpen}
         <div class="button-container">
             <div class="filter__tier">
@@ -156,7 +134,7 @@
                         on:click={() => toggledTiers.toggleTier(tier)}
                         class:selected={$filteredTiers.includes(tier)}
                         class="filter__button">{tierToNumeral(tier)}</button
-                    >
+                    >{' '}
                 {/each}
             </div>
             <label class="filter__search">
@@ -177,9 +155,7 @@
                         >{team.name}
                         <span class="display-font"
                             >{tierToNumeral(team.tier)}</span
-                        >{#if nafTeams.includes(team.id)}<span
-                                class="display-font">&nbsp;N</span
-                            >{/if}</button
+                        ></button
                     >
                 {/each}
                 {#if sortedTeam.length === 0}

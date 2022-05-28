@@ -11,6 +11,7 @@ export interface StarPlayer {
     skills: number[];
     twoForOne?: number;
     doesNotPlayFor?: TeamSpecialRule[];
+    extraSkillCost?: number;
 }
 
 export interface Player {
