@@ -5,15 +5,6 @@
     import Modal from './components/uiComponents/modal.svelte';
 
     import Overlay from './components/uiComponents/overlay.svelte';
-    import { onMount } from 'svelte';
-
-    onMount(async () => {
-        await import('./components/auth/firebaseAuth.service').then(
-            (firebase) => {
-                firebase.init();
-            }
-        );
-    });
 </script>
 
 <Modal />

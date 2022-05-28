@@ -28,11 +28,7 @@
     import { scale } from 'svelte/transition';
     import { showDungeonBowl } from '../store/showDungeonBowl.store';
     import type { TeamFormat } from '../types/teamFormat';
-    import { currentUserStore } from '../store/currentUser.store';
-    import FootballSpinner from './uiComponents/footballSpinner.svelte';
-    import RosterPreviewCard from './uiComponents/rosterPreviewCard.svelte';
     import { getSavedRosterFromLocalStorage } from '../helpers/localStorageHelper';
-    import { rosterCache } from '../store/rosterCache.store';
     import type { RosterPreviews } from '../models/roster.model';
 
     export let teamList: Team[];
@@ -41,6 +37,7 @@
     let includeNaf: boolean = true;
 
     const nafTeams = [28, 29];
+    const teamTiers: TeamTier[] = [1, 2, 3, 4, 5];
     const rosterModes: RosterMode[] = ['league', 'exhibition'];
     const teamFormats: TeamFormat[] = ['elevens', 'sevens', 'dungeon bowl'];
 
@@ -55,21 +52,6 @@
                 : x
         );
 
-    // This should be in a service of some type
-    async function getRosterPreviews() {
-        if ($rosterCache.rosterPreviews.valid) {
-            return $rosterCache.rosterPreviews.cachedItem;
-        }
-        try {
-            const dbService = await import('./auth/firebaseDB.service');
-            const rosterPreviewDocument = await dbService.gerRosterPreviews();
-            const rosterPreviews = rosterPreviewDocument.data();
-            rosterCache.cacheRosterPreviews(rosterPreviews);
-            return rosterPreviews;
-        } catch {
-            throw new Error('');
-        }
-    }
     const sortTeam = () => {
         return teamList.sort((a, b) => a.name.localeCompare(b.name));
     };
@@ -117,16 +99,14 @@
     };
 
     const tierToNumeral = (tier: TeamTier) => {
-        switch (tier) {
-            case 1:
-                return 'I';
-            case 2:
-                return 'II';
-            case 3:
-                return 'III';
-            default:
-                break;
-        }
+        const tierMap = {
+            1: 'I',
+            2: 'II',
+            3: 'III',
+            4: 'IV',
+            5: 'V',
+        };
+        return tierMap[tier];
     };
 
     const inputCode = () => {
@@ -147,13 +127,6 @@
     function changeFormat(format: any) {
         teamFormat.set(format);
         toggleDungeonBowl(format === 'dungeon bowl');
-    }
-
-    function sortedPreviews(rosterPreviews: RosterPreviews) {
-        if (!rosterPreviews) return [];
-        const previews = Object.values(rosterPreviews);
-        if (previews.length === 0) return [];
-        return previews.sort((a, b) => a.teamName.localeCompare(b.teamName));
     }
 </script>
 
@@ -178,27 +151,13 @@
         <div class="button-container">
             <div class="filter__tier">
                 Filter:
-                <button
-                    on:click={() => toggledTiers.toggleTier(1)}
-                    class:selected={$filteredTiers.includes(1)}
-                    class="filter__button">I</button
-                >
-                <button
-                    on:click={() => toggledTiers.toggleTier(2)}
-                    class:selected={$filteredTiers.includes(2)}
-                    class="filter__button">II</button
-                >
-                <button
-                    on:click={() => toggledTiers.toggleTier(3)}
-                    class:selected={$filteredTiers.includes(3)}
-                    class="filter__button">III</button
-                >
-                <button
-                    on:click={toggleNaf}
-                    title="Filter NAF teams"
-                    class:selected={includeNaf}
-                    class="filter__button">N</button
-                >
+                {#each teamTiers as tier}
+                    <button
+                        on:click={() => toggledTiers.toggleTier(tier)}
+                        class:selected={$filteredTiers.includes(tier)}
+                        class="filter__button">{tierToNumeral(tier)}</button
+                    >
+                {/each}
             </div>
             <label class="filter__search">
                 Search: <input
@@ -253,29 +212,13 @@
                 clickFunction={inputCode}
             />
         </div>
-        {#if $currentUserStore}
-            {#await getRosterPreviews()}
-                <FootballSpinner />
-            {:then rosterPreviews}
-                <h3 class="signed-in-heading">
-                    Teams of {$currentUserStore.displayName}
-                </h3>
-                <div class="team-previews">
-                    {#each sortedPreviews(rosterPreviews) as preview}
-                        <RosterPreviewCard {preview} />
-                    {/each}
-                </div>
-            {:catch}
-                <p style="color: red">Something went wrong.</p>
-            {/await}
-        {:else}
-            <h3>Locally stored teams</h3>
-            {#each $savedRosterIndex.index as savedRoster, i}
-                <Button clickFunction={() => loadTeam(savedRoster)}
-                    >{savedRoster.name || 'Saved Roster ' + (i + 1)}</Button
-                >
-            {/each}
-        {/if}
+
+        <h3>Locally stored teams</h3>
+        {#each $savedRosterIndex.index as savedRoster, i}
+            <Button clickFunction={() => loadTeam(savedRoster)}
+                >{savedRoster.name || 'Saved Roster ' + (i + 1)}</Button
+            >
+        {/each}
     </div>
     <!-- Refactor to it's own component -->
 {/if}

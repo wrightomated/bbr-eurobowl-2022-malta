@@ -23,7 +23,7 @@ export interface TeamReroll {
     max: number;
 }
 
-export type TeamTier = 1 | 2 | 3;
+export type TeamTier = 1 | 2 | 3 | 4 | 5;
 
 export type TeamName =
     | 'Imperial Nobility'

@@ -9,32 +9,14 @@
     import { sendEventToAnalytics } from '../analytics/plausible';
     import { modalState } from '../store/modal.store';
     import ColumnControl from './columnControl.svelte';
-    import { currentUserStore } from '../store/currentUser.store';
-    import { rosterCache } from '../store/rosterCache.store';
 
     let saved = false;
     let syncing = false;
     let rosterCleared = false;
 
     async function saveRoster() {
-        if ($currentUserStore) {
-            syncing = true;
-            try {
-                await import('./auth/firebaseDB.service').then((service) =>
-                    service.uploadRoster($roster)
-                );
-                saved = true;
-                rosterCache.invalidateRoster($roster.rosterId);
-                rosterCache.invalidateRosterPreviews();
-            } catch (error) {
-                console.error(error);
-            } finally {
-                syncing = false;
-            }
-        } else {
-            savedRosterIndex.addRoster($roster);
-            saved = true;
-        }
+        savedRosterIndex.addRoster($roster);
+        saved = true;
     }
 
     const toggleDelete = () => showDelete.set(!$showDelete);

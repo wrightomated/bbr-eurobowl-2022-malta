@@ -2,18 +2,11 @@
     import MaterialButton from '../uiComponents/materialButton.svelte';
     import { menuDrawerOpen } from '../../store/menuDrawer.store';
     import MenuItems from './menuItems.svelte';
-    import UserProfile from '../auth/userProfile.svelte';
-    import UserCircle from './userCircle.svelte';
 
-    let menuComponent: typeof MenuItems | typeof UserProfile;
+    let menuComponent: typeof MenuItems;
 
     const toggleNavMenu = () => {
         menuComponent = MenuItems;
-        menuDrawerOpen.set(!$menuDrawerOpen);
-    };
-
-    const toggleUserProfile = () => {
-        menuComponent = UserProfile;
         menuDrawerOpen.set(!$menuDrawerOpen);
     };
 
@@ -32,17 +25,10 @@
         />
     </div>
     <h1>BB Roster</h1>
-    <button class="profile" title="User Profile" on:click={toggleUserProfile}>
-        <UserCircle />
-    </button>
 </header>
 <div class="spacer" class:spacer--show={$menuDrawerOpen} />
 <nav class="menu__drawer" class:menu__drawer--open={$menuDrawerOpen}>
-    <div
-        class="menu__buttons"
-        class:menu__buttons--hidden={!$menuDrawerOpen}
-        class:menu__buttons--reversed={menuComponent === UserProfile}
-    >
+    <div class="menu__buttons" class:menu__buttons--hidden={!$menuDrawerOpen}>
         <svelte:component this={menuComponent} />
     </div>
 </nav>
