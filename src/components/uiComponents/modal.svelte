@@ -56,6 +56,8 @@
         border-radius: 25px;
         box-shadow: 0 2px 3px 0 rgba(60, 64, 67, 0.3),
             0 6px 10px 4px rgba(60, 64, 67, 0.15);
+        max-height: 80vh;
+        overflow: scroll;
     }
     .overlay {
         z-index: 10;
