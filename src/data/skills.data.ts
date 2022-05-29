@@ -108,10 +108,10 @@ export const skillCatalogue: Skill[] = [
     { id: 87, name: 'Timmm-ber!', category: 'T' },
     { id: 88, name: 'Unchannelled Fury', category: 'T' },
     // Dungeon bowl skills
-    { id: 89, name: 'Portal Navigator', category: 'G' },
-    { id: 90, name: 'Give and Go', category: 'P' },
-    { id: 91, name: 'Portal Passer', category: 'P' },
-    { id: 92, name: 'Wall Thrower', category: 'P' },
+    // { id: 89, name: 'Portal Navigator', category: 'G' },
+    // { id: 90, name: 'Give and Go', category: 'P' },
+    // { id: 91, name: 'Portal Passer', category: 'P' },
+    // { id: 92, name: 'Wall Thrower', category: 'P' },
     // norse
     { id: 93, name: 'Drunkard', category: 'T' },
     { id: 94, name: 'Pick-me-up', category: 'T' },

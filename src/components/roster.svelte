@@ -15,6 +15,8 @@
     import Pill from './uiComponents/pill.svelte';
     import { getTeamFormatShortDisplay } from '../types/teamFormat';
     import RosterStatusToggle from './rosterStatusToggle.svelte';
+    import { ebAvailableSkills } from '../store/ebAvailableSkills.store';
+    import SkillPackSummary from './euroBowl/skillPackSummary.svelte';
 
     export let playerTypes: Player[];
 
@@ -106,6 +108,8 @@
         </table>
     </div>
 {/if}
+
+<SkillPackSummary />
 <RosterStatusToggle />
 
 <style lang="scss">

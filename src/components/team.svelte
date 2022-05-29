@@ -19,7 +19,6 @@
         showAvailablePlayers,
         showAvailableStarPlayers,
     } from '../store/showPlayerList.store';
-    import DocumentTitleWriter from './documentTitleWriter.svelte';
     import { sendEventToAnalytics } from '../analytics/plausible';
     import DungeonBowlContainer from './dungeonBowl/dungeonBowlContainer.svelte';
     import { showDungeonBowl } from '../store/showDungeonBowl.store';
@@ -47,7 +46,6 @@
 </script>
 
 <LocalStorageController />
-<DocumentTitleWriter />
 
 <span class="no-print">
     <TeamSelector {teamList} />

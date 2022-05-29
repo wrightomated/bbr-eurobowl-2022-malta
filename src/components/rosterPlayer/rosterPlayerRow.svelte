@@ -5,6 +5,7 @@
     import { showSkillButtons } from '../../store/showSkillButtons.store';
     import { filteredTableColumns } from '../../store/filteredTableColumns.store';
     import type { TableColumnName } from '../../models/rosterTableColumns.model';
+    import EuroBowlAddSkill from '../euroBowl/euroBowlAddSkill.svelte';
 
     export let index: number;
 
@@ -81,7 +82,7 @@
 {#if !rosterPlayer.starPlayer && $showSkillButtons[index]}
     <tr>
         <td colspan="16">
-            <AddSkill {index} />
+            <EuroBowlAddSkill {index} />
         </td>
     </tr>
 {/if}

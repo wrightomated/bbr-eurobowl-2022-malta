@@ -13,6 +13,7 @@
     import StatBlock from '../playerCard/statBlock.svelte';
     import { showSkillButtons } from '../../store/showSkillButtons.store';
     import { blurOnEscapeOrEnter } from '../../helpers/blurOnEscapeOrEnter';
+    import EuroBowlAddSkill from '../euroBowl/euroBowlAddSkill.svelte';
 
     export let index: number;
     let playerNumber = index + 1;
@@ -243,7 +244,7 @@
 
     {#if !rosterPlayer.starPlayer && $showSkillButtons[index]}
         <div>
-            <AddSkill {index} />
+            <EuroBowlAddSkill {index} />
         </div>
     {/if}
     <div class="content">

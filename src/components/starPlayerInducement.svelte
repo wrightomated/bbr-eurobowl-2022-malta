@@ -5,6 +5,7 @@
     import { roster } from '../store/teamRoster.store';
     import MaterialButton from './uiComponents/materialButton.svelte';
     import type { Team } from '../models/team.model';
+    import { ebAvailableSkills } from '../store/ebAvailableSkills.store';
 
     let selectedId: number;
 
@@ -81,7 +82,7 @@
         >
         <td>{selectedPlayer?.cost || 0},000</td>
         <td>
-            {#if filteredStarPlayers.length > 0 && $roster.players.filter((x) => x.starPlayer && !x.deleted).length < 2}
+            {#if filteredStarPlayers.length > 0 && $roster.players.filter((x) => x.starPlayer && !x.deleted).length < $ebAvailableSkills.star.max}
                 <div class="add-star">
                     <MaterialButton
                         hoverText="Add star player"

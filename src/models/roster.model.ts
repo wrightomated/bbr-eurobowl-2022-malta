@@ -1,3 +1,4 @@
+import type { SkillPack, SkillPackLabel } from '../data/eurobowlSkillPack.data';
 import type { RosterMode } from '../store/rosterMode.store';
 import type { TeamFormat } from '../types/teamFormat';
 import type { CollegeName } from './dungeonBowl.model';
@@ -17,14 +18,8 @@ export interface Roster {
     mode?: RosterMode;
     format?: TeamFormat;
     leagueRosterStatus?: LeagueRosterStatus;
-    skillPack?: RosterSkillPack;
+    skillPack?: SkillPack & { label?: SkillPackLabel };
 }
-
-export type RosterSkillPack = {
-    primary?: { max: number; used: number };
-    secondary?: { max: number; used: number };
-    star?: { max: number; used: number };
-};
 
 export type RosterPreviews = { [key: string]: RosterPreview };
 

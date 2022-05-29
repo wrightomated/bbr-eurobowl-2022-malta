@@ -7,7 +7,6 @@ import type {
     LeagueRosterStatus,
     Roster,
     RosterPlayerRecord,
-    RosterSkillPack,
 } from '../models/roster.model';
 import type { TeamName } from '../models/team.model';
 import { deletedPlayer, stringToRoster } from '../helpers/stringToRoster';
@@ -18,7 +17,7 @@ import { savedRosterIndex } from './saveDirectory.store';
 import { getGameTypeSettings, getMaxPlayers } from '../data/gameType.data';
 import type { CollegeName } from '../models/dungeonBowl.model';
 import type { TeamFormat } from '../types/teamFormat';
-import type { SkillPack } from '../data/eurobowlSkillPack.data';
+import type { SkillPack, SkillPackLabel } from '../data/eurobowlSkillPack.data';
 
 export const maxPlayerNumber = 16;
 
@@ -214,7 +213,7 @@ function createRoster() {
             mode: RosterMode;
             format: TeamFormat;
             fans: number;
-            skillPack?: SkillPack;
+            skillPack?: SkillPack & { label: SkillPackLabel };
         }) => set(getEmptyRoster(options)),
         updateTreasury: (change: number) =>
             update((store) => {
@@ -230,7 +229,7 @@ const getEmptyRoster: (options?: {
     fans: number;
     mode: RosterMode;
     format: TeamFormat;
-    skillPack?: SkillPack;
+    skillPack?: SkillPack & { label: SkillPackLabel };
 }) => Roster = (options) => {
     const gameSettings = getGameTypeSettings(options?.format);
     return {
@@ -245,31 +244,8 @@ const getEmptyRoster: (options?: {
         mode: options?.mode,
         format: options?.format || 'elevens',
         leagueRosterStatus: options?.mode === 'league' ? 'draft' : undefined,
-        skillPack: expandSkillPack(options.skillPack) || {},
+        skillPack: options?.skillPack || {},
     };
-};
-
-const expandSkillPack = (sp: SkillPack) => {
-    let rosterSkillPack: RosterSkillPack = {};
-    if (sp.primarySkills) {
-        rosterSkillPack.primary = {
-            used: 0,
-            max: sp.primarySkills,
-        };
-    }
-    if (sp.secondarySkills) {
-        rosterSkillPack.secondary = {
-            used: 0,
-            max: sp.secondarySkills,
-        };
-    }
-    if (sp.starPlayers) {
-        rosterSkillPack.star = {
-            used: 0,
-            max: sp.starPlayers,
-        };
-    }
-    return rosterSkillPack;
 };
 
 const switchTwoElements = (arr: any[], index1: number, index2: number) => {

@@ -35,6 +35,7 @@
     import { getSavedRosterFromLocalStorage } from '../helpers/localStorageHelper';
     import SkillPackBox from './euroBowl/skillPackBox.svelte';
     import { selectedSkillPack } from '../store/skillPack.store';
+    import { skillPackData } from '../data/eurobowlSkillPack.data';
 
     export let teamList: Team[];
 
@@ -70,7 +71,10 @@
             mode: 'exhibition',
             fans: 0,
             format: 'elevens',
-            skillPack: $selectedSkillPack,
+            skillPack: {
+                ...skillPackData[$currentTeam.tier][$selectedSkillPack],
+                label: $selectedSkillPack,
+            },
         });
 
         teamSelectionOpen.set(false);

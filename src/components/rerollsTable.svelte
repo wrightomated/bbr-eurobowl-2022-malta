@@ -8,6 +8,7 @@
     import StarPlayerInducement from './starPlayerInducement.svelte';
     import type { DungeonBowlTeam } from '../models/dungeonBowl.model';
     import { calculateInducementTotal } from '../helpers/totalInducementAmount';
+    import { ebAvailableSkills } from '../store/ebAvailableSkills.store';
 
     export let selectedTeam: Team | DungeonBowlTeam;
 
@@ -84,7 +85,7 @@
         </tr>
     </table>
 
-    {#if $roster.format === 'elevens'}
+    {#if $roster.format === 'elevens' && $ebAvailableSkills.star.max > 0}
         <StarPlayerInducement />
     {/if}
 

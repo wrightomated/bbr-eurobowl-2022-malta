@@ -1,8 +1,10 @@
 <script lang="ts">
     import { currentTeam } from '../../store/currentTeam.store';
+    import { modalState } from '../../store/modal.store';
     import { showSkillButtons } from '../../store/showSkillButtons.store';
 
     import { roster } from '../../store/teamRoster.store';
+    import EuroBowlAddSkill from '../euroBowl/euroBowlAddSkill.svelte';
     import MaterialButton from '../uiComponents/materialButton.svelte';
 
     export let index: number;
@@ -45,11 +47,14 @@
         roster.updateTreasury(-rosterPlayer.player.cost);
     };
 
-    const toggleShowSkills = () => {
-        showSkillButtons.set(
-            $showSkillButtons.map((x, i) => (i === index ? !x : x))
-        );
-    };
+    function toggleShowSkills() {
+        modalState.set({
+            ...$modalState,
+            isOpen: true,
+            component: EuroBowlAddSkill,
+            componentProps: { index },
+        });
+    }
 </script>
 
 {#if rosterPlayer.starPlayer}
