@@ -23,10 +23,12 @@
             />
         </div>
     {/if}
-    <svelte:component
-        this={$modalState.component}
-        {...$modalState.componentProps}
-    />
+    <div class="content">
+        <svelte:component
+            this={$modalState.component}
+            {...$modalState.componentProps}
+        />
+    </div>
 </div>
 
 <div
@@ -52,12 +54,15 @@
         z-index: 11;
         background-color: white;
         min-width: 240px;
-        padding: 40px;
+        padding: 20px 2px;
         border-radius: 25px;
         box-shadow: 0 2px 3px 0 rgba(60, 64, 67, 0.3),
             0 6px 10px 4px rgba(60, 64, 67, 0.15);
+    }
+    .content {
         max-height: 80vh;
-        overflow: scroll;
+        overflow-y: scroll;
+        padding: 20px;
     }
     .overlay {
         z-index: 10;
