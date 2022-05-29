@@ -14,6 +14,7 @@
     import { showSkillButtons } from '../../store/showSkillButtons.store';
     import { blurOnEscapeOrEnter } from '../../helpers/blurOnEscapeOrEnter';
     import EuroBowlAddSkill from '../euroBowl/euroBowlAddSkill.svelte';
+    import { modalState } from '../../store/modal.store';
 
     export let index: number;
     let playerNumber = index + 1;
@@ -77,11 +78,19 @@
         return false;
     };
 
-    const toggleShowSkills = () => {
-        showSkillButtons.set(
-            $showSkillButtons.map((x, i) => (i === index ? !x : x))
-        );
-    };
+    // const toggleShowSkills = () => {
+    //     showSkillButtons.set(
+    //         $showSkillButtons.map((x, i) => (i === index ? !x : x))
+    //     );
+    // };
+    function toggleShowSkills() {
+        modalState.set({
+            ...$modalState,
+            isOpen: true,
+            component: EuroBowlAddSkill,
+            componentProps: { index },
+        });
+    }
 
     const getStat = (stat: number, i: number) => {
         const alteredStat =
