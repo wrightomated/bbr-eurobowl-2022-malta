@@ -1,6 +1,6 @@
-# BBRoster
+# BBRoster: Eurobowl 2022 Malta
 
-A simple web app to keep track of Bloodbowl 2020 teams made with [Svelte](https://svelte.dev). 
+A simple web app to keep track of Eurobowl 2022 Malta teams made with [Svelte](https://svelte.dev).
 
 ## Get started
 
@@ -65,8 +65,3 @@ Run against local:
 ```bash
 npm run e2e:local
 ```
-
-
-## BBRoster.com status
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5f0ba70f-60e1-4d76-8f38-23841f127619/deploy-status)](https://app.netlify.com/sites/bbroster/deploys)

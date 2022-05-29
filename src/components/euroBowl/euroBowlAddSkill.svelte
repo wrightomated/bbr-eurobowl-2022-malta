@@ -120,6 +120,9 @@
             <button on:click={() => addSkill(s.id)}>{s.name}</button>
         {/each}
     {/if}
+    {#if !allowPrimary && !allowSecondary}
+        <p>No skills left to allocate.</p>
+    {/if}
 </div>
 
 <style lang="scss">
@@ -129,7 +132,7 @@
         position: sticky;
         left: 0;
         top: 0;
-        max-width: calc(100vw - 48px);
+        min-width: 50vw;
     }
     .category-label {
         font-family: var(--display-font);

@@ -8,7 +8,7 @@
 
     import MaterialButton from './uiComponents/materialButton.svelte';
 
-    const baseUrl = 'https://bbroster.com';
+    const baseUrl = 'https://eurobowl.bbroster.com';
 
     let urlCoppied = false;
     let codeCoppied = false;

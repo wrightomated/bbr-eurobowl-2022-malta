@@ -105,3 +105,5 @@ export type SkillPack = {
     secondarySkills?: number;
     starPlayers?: number;
 };
+
+export type RosterSkillPack = SkillPack & { label: SkillPackLabel };

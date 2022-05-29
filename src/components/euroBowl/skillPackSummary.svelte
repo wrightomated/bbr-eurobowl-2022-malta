@@ -1,5 +1,10 @@
 <script lang="ts">
     import { ebAvailableSkills } from '../../store/ebAvailableSkills.store';
+    import { roster } from '../../store/teamRoster.store';
+    import BribeSneakyGit from './bribeSneakyGit.svelte';
+
+    $: playerCount = $roster.players.filter((x) => !x.starPlayer).length;
+
     const summaryItems = ['primary', 'secondary', 'star'];
     const itemTitleMap = {
         primary: 'Primary Skills',
@@ -8,6 +13,7 @@
     };
 </script>
 
+<BribeSneakyGit />
 <div class="summary">
     <p>Skill Pack {$ebAvailableSkills.label}</p>
     {#each summaryItems as summaryItem}
@@ -19,6 +25,9 @@
             {$ebAvailableSkills[summaryItem].max}
         </p>
     {/each}
+    <p class:danger={playerCount < 11}>
+        Min players: {playerCount} / 11
+    </p>
 </div>
 
 <style>

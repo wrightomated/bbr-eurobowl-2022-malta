@@ -115,10 +115,11 @@ const getFormatInt = (format: TeamFormat) => {
 
 export const rosterToString = (roster: Roster) => {
     try {
+        const prefix = 'e' + roster.skillPack.label;
         const extraS = extraToString(roster.extra);
         const inducementS = inducementToString(roster.inducements);
         const players = roster.players.map((x) => playerToString(x)).join('');
-        return `t${roster.teamId}t${roster.treasury}m${getModeInt(
+        return `${prefix}t${roster.teamId}t${roster.treasury}m${getModeInt(
             roster.mode
         )}f${getFormatInt(
             roster.format
