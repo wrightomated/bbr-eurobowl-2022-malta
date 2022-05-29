@@ -81,6 +81,8 @@
         showAvailablePlayers.set(false);
         showAvailableStarPlayers.set(false);
         showNewTeamDialogue.set(false);
+
+        document.body.scrollIntoView();
     };
 
     const loadTeam = (savedRoster: { id: number; name?: string }) => {
