@@ -36,7 +36,7 @@
     .img-cont {
         width: 100%;
         background-color: var(--secondary-background-colour);
-        border-bottom: 1px solid var(--secondary-colour);
+        border-bottom: 2px solid var(--secondary-colour);
     }
     .logo {
         display: block;
