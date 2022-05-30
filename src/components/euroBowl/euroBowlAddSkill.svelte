@@ -88,13 +88,15 @@
 
     {#if allowPrimary}
         <h3>Add Primary Skill:</h3>
-        <ToggleButton
-            options={rosterPlayer.player.primary}
-            selectedIndex={selectedPrimary
-                ? rosterPlayer.player.primary.indexOf(selectedPrimary)
-                : 0}
-            selected={(cat) => (selectedPrimary = cat)}
-        />
+        {#if rosterPlayer.player.primary.length > 1}
+            <ToggleButton
+                options={rosterPlayer.player.primary}
+                selectedIndex={selectedPrimary
+                    ? rosterPlayer.player.primary.indexOf(selectedPrimary)
+                    : 0}
+                selected={(cat) => (selectedPrimary = cat)}
+            />
+        {/if}
 
         <p class="category-label">
             {categoryToName.get(selectedPrimary)}
@@ -105,13 +107,15 @@
     {/if}
     {#if allowSecondary}
         <h3>Add Secondary Skill:</h3>
-        <ToggleButton
-            options={rosterPlayer.player.secondary}
-            selectedIndex={selectedSecondary
-                ? rosterPlayer.player.secondary.indexOf(selectedSecondary)
-                : 0}
-            selected={(cat) => (selectedSecondary = cat)}
-        />
+        {#if rosterPlayer.player.secondary.length > 1}
+            <ToggleButton
+                options={rosterPlayer.player.secondary}
+                selectedIndex={selectedSecondary
+                    ? rosterPlayer.player.secondary.indexOf(selectedSecondary)
+                    : 0}
+                selected={(cat) => (selectedSecondary = cat)}
+            />
+        {/if}
 
         <p class="category-label">
             {categoryToName.get(selectedSecondary)}
@@ -133,6 +137,9 @@
         left: 0;
         top: 0;
         min-width: 50vw;
+        @media screen and (max-width: 450px) {
+            min-width: 80vw;
+        }
     }
     .category-label {
         font-family: var(--display-font);

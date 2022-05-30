@@ -21,17 +21,13 @@
         showAvailableStarPlayers,
     } from '../store/showPlayerList.store';
     import MaterialButton from './uiComponents/materialButton.svelte';
-    import { rosterMode } from '../store/rosterMode.store';
-    import ToggleButton from './uiComponents/toggleButton.svelte';
+
     import { teamFormat } from '../store/teamFormat.store';
-    import type { RosterMode } from '../store/rosterMode.store';
     import { blurOnEscapeOrEnter } from '../helpers/blurOnEscapeOrEnter';
-    import { sendEventToAnalytics } from '../analytics/plausible';
     import Button from './uiComponents/button.svelte';
     import { flip } from 'svelte/animate';
     import { scale } from 'svelte/transition';
     import { showDungeonBowl } from '../store/showDungeonBowl.store';
-    import type { TeamFormat } from '../types/teamFormat';
     import { getSavedRosterFromLocalStorage } from '../helpers/localStorageHelper';
     import SkillPackBox from './euroBowl/skillPackBox.svelte';
     import { selectedSkillPack } from '../store/skillPack.store';
@@ -82,7 +78,7 @@
         showAvailableStarPlayers.set(false);
         showNewTeamDialogue.set(false);
 
-        document.body.scrollIntoView();
+        document.getElementsByTagName('main')[0].scrollIntoView();
     };
 
     const loadTeam = (savedRoster: { id: number; name?: string }) => {
