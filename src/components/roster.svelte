@@ -52,12 +52,8 @@
     <p class="sub-heading print-only">
         {$roster.teamType} Team
     </p>
-    <p class="sub-heading print-only" title={$roster.format}>
-        {getTeamFormatShortDisplay($roster.format)}
-    </p>
-    <p class="sub-heading print-only" title={$roster.mode}>
-        {$roster.mode}
-    </p>
+    <p class="sub-heading print-only">EuroBowl 2022 Malta</p>
+
     <RosterSave />
 </div>
 <Export />
