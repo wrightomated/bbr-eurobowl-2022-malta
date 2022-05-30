@@ -20,6 +20,8 @@
         src="assets/images/eurobowl250.png"
         alt="EuroBowl 2022 Malta logo"
         loading="lazy"
+        width="250px"
+        height="277px"
     />
 </div>
 <main>
