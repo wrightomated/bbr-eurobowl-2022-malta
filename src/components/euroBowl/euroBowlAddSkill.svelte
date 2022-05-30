@@ -133,6 +133,9 @@
         left: 0;
         top: 0;
         min-width: 50vw;
+        @media screen and (max-width: 450px) {
+            min-width: 80vw;
+        }
     }
     .category-label {
         font-family: var(--display-font);
