@@ -36,9 +36,7 @@ export const ebAvailableSkills: Readable<SkillPackUsage> = derived(
                     doubleSkills.length,
             },
             secondary: {
-                max:
-                    $roster.skillPack?.secondarySkills + doubleSkills?.length ||
-                    0,
+                max: $roster.skillPack?.secondarySkills || 0,
                 used:
                     skillCount
                         .map((x) => x.secondary)
