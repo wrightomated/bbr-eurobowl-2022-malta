@@ -50,7 +50,7 @@
             width: 333px;
         }
         @media screen and (min-width: 1600px) {
-            width: 500px;
+            width: 400px;
         }
         @media print {
             display: none;
