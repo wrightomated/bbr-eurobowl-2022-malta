@@ -15,6 +15,10 @@
 
     $: rosterPlayer = $roster.players[index];
 
+    $: rosterHasDoubleSkill =
+        $roster.players.filter((x) => x?.alterations?.extraSkills?.length > 1)
+            .length > 0;
+
     $: availableSkills = skillCatalogue.filter(
         (x) =>
             !rosterPlayer.alterations?.extraSkills?.includes(x.id) &&
@@ -25,7 +29,8 @@
         ($ebAvailableSkills.primary.used < $ebAvailableSkills.primary.max &&
             (rosterPlayer.alterations?.extraSkills?.length || 0) < 1) ||
         ($ebAvailableSkills.secondary.used < $ebAvailableSkills.secondary.max &&
-            (rosterPlayer.alterations?.extraSkills?.length || 0) < 1) ||
+            (rosterPlayer.alterations?.extraSkills?.length || 0) <= 1 &&
+            !rosterHasDoubleSkill) ||
         ($ebAvailableSkills.doubleSkills?.length === 0 &&
             $ebAvailableSkills.primary.used < $ebAvailableSkills.primary.max &&
             $ebAvailableSkills.secondary.used <
