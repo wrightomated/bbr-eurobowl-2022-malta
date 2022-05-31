@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { Z_ASCII } from 'zlib';
-
     import { ebAvailableSkills } from '../../store/ebAvailableSkills.store';
     import { roster } from '../../store/teamRoster.store';
     import BribeSneakyGit from './bribeSneakyGit.svelte';
