@@ -25,6 +25,11 @@
             ? $roster.players.findIndex((p) => p.deleted)
             : $roster.players.length;
     $: activePlayersNumber = $roster.players.filter((p) => !p.deleted).length;
+
+    const coachDetails = {
+        coach: localStorage.getItem('coach'),
+        email: localStorage.getItem('email'),
+    };
 </script>
 
 <div class="team-name-container">
@@ -40,12 +45,20 @@
         />
     </h2>
 </div>
+
 <span class="no-print">
     <div class="pill-box">
         <Pill text={$roster.teamType + ' Team'} />
         <Pill text={'EuroBowl 2022 Malta'} />
     </div>
 </span>
+
+{#if coachDetails.coach && coachDetails.email}
+    <span class="sub-heading-box">
+        <p class=" print-only">Coach Name: {coachDetails.coach}</p>
+        <p class=" print-only">Email: {coachDetails.email}</p>
+    </span>
+{/if}
 
 <div class="sub-heading-box">
     <p class="sub-heading print-only print-only--larger">{$roster.teamName}</p>
@@ -112,7 +125,9 @@
     .sub-heading-box {
         display: flex;
         align-items: flex-end;
-        gap: 8px;
+        p {
+            margin-right: 8px;
+        }
     }
     .player-cards {
         display: grid;

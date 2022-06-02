@@ -267,6 +267,10 @@ const switchTwoElements = (arr: any[], index1: number, index2: number) => {
 const rosterFromQueryString = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    if (urlParams.get('coach') && urlParams.get('email')) {
+        localStorage.setItem('coach', urlParams.get('coach'));
+        localStorage.setItem('email', urlParams.get('email'));
+    }
     window.history.replaceState({}, '', '/');
     return rosterFromCode(code);
 };
