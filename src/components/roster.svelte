@@ -55,8 +55,8 @@
 
 {#if coachDetails.coach && coachDetails.email}
     <span class="sub-heading-box">
-        <p class=" print-only">Coach Name: {coachDetails.coach}</p>
-        <p class=" print-only">Email: {coachDetails.email}</p>
+        <p class="coach-details print-only">Coach Name: {coachDetails.coach}</p>
+        <p class="coach-details print-only">Email: {coachDetails.email}</p>
     </span>
 {/if}
 
@@ -213,6 +213,10 @@
 
     .dungeon-bowl-callout {
         text-align: center;
+    }
+
+    .coach-details {
+        font-family: var(--display-font);
     }
     @media print {
         .heading {
