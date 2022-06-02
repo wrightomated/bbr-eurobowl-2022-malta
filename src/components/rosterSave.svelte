@@ -26,7 +26,6 @@
     const printPage = () => {
         sendEventToAnalytics('Print');
         rosterViewMode.set('table');
-        showAllInducements.set(false);
 
         // Delay for view switch in the event loop
         setTimeout(() => {

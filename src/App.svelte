@@ -37,6 +37,9 @@
         width: 100%;
         background-color: var(--secondary-background-colour);
         border-bottom: 2px solid var(--secondary-colour);
+        @media print {
+            display: none;
+        }
     }
     .logo {
         display: block;
@@ -51,9 +54,6 @@
         }
         @media screen and (min-width: 1600px) {
             width: 400px;
-        }
-        @media print {
-            display: none;
         }
     }
 </style>

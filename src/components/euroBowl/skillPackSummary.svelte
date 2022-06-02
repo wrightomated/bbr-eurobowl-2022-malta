@@ -32,7 +32,7 @@
     </p>
 </div>
 
-<style>
+<style lang="scss">
     .danger {
         color: var(--main-colour);
     }
@@ -40,7 +40,9 @@
         margin-top: 8px;
         display: flex;
         flex-wrap: wrap;
-        column-gap: 20px;
         font-family: var(--display-font);
+        p {
+            margin-right: 20px;
+        }
     }
 </style>

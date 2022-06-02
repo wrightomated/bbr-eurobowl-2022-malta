@@ -32,6 +32,12 @@
             }
             &.extra {
                 color: green;
+                @media print {
+                    font-weight: bold;
+                }
+            }
+            @media print {
+                color: black !important;
             }
         }
     }
