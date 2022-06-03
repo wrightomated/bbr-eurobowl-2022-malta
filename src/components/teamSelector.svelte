@@ -122,7 +122,7 @@
 </script>
 
 {#if !$teamLoadOpen && $showNewTeamDialogue}
-    <h2 class="page-title">Create EuroBowl 2022 Malta Team</h2>
+    <h2 class="page-title">New EuroBowl 2022 Malta Team</h2>
     <a
         class="rules-link"
         href="http://www.eurobowl.eu/2022/default.asp?p=2"
