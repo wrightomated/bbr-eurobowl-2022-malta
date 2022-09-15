@@ -6,7 +6,7 @@
 
     import Overlay from './components/uiComponents/overlay.svelte';
 
-    let logo, y;
+    let y;
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -14,7 +14,7 @@
 <Modal />
 <Overlay />
 <Menu />
-<div class="img-cont">
+<!-- <div class="img-cont">
     <img
         class="logo no-print"
         src="assets/images/eurobowl.png"
@@ -23,7 +23,7 @@
         width="500px"
         height="554px"
     />
-</div>
+</div> -->
 <main>
     <Team />
     <Footer />
