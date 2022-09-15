@@ -1,6 +1,6 @@
-# BBRoster: Eurobowl 2022 Malta
+# BBRoster: Eurobowl 2022
 
-A simple web app to keep track of Eurobowl 2022 Malta teams made with [Svelte](https://svelte.dev).
+A simple web app to keep track of Eurobowl 2022 teams made with [Svelte](https://svelte.dev).
 
 ## Get started
 
