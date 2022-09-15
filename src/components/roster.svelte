@@ -49,7 +49,7 @@
 <span class="no-print">
     <div class="pill-box">
         <Pill text={$roster.teamType + ' Team'} />
-        <Pill text={'EuroBowl 2022 Malta'} />
+        <Pill text={'EuroBowl 2022'} />
     </div>
 </span>
 
@@ -65,7 +65,7 @@
     <p class="sub-heading print-only">
         {$roster.teamType} Team
     </p>
-    <p class="sub-heading print-only">EuroBowl 2022 Malta</p>
+    <p class="sub-heading print-only">EuroBowl 2022</p>
 
     <RosterSave />
 </div>

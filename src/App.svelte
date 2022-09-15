@@ -18,7 +18,7 @@
     <img
         class="logo no-print"
         src="assets/images/eurobowl.png"
-        alt="EuroBowl 2022 Malta logo"
+        alt="EuroBowl 2022 logo"
         loading="lazy"
         width="500px"
         height="554px"
