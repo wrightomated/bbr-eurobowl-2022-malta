@@ -122,16 +122,7 @@
 </script>
 
 {#if !$teamLoadOpen && $showNewTeamDialogue}
-    <h2 class="page-title">New EuroBowl 2022 Malta Team</h2>
-    <a
-        class="rules-link"
-        href="http://www.eurobowl.eu/2022/default.asp?p=2"
-        target="_blank"
-        rel="noopener noreferrer"
-        >EuroBowl 2022 Malta Rules Pack <i class="material-icons launch-icon"
-            >launch</i
-        ></a
-    >
+    <h2 class="page-title">New EuroBowl 2022 Team</h2>
 
     {#if $teamSelectionOpen}
         <div class="button-container">
@@ -300,9 +291,7 @@
     .signed-in-heading {
         text-align: center;
     }
-    .rules-link {
-        text-decoration: underline;
-    }
+
     .launch-icon {
         font-size: 16px;
         vertical-align: text-bottom;
